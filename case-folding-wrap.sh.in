@@ -1,0 +1,10 @@
+#!/bin/sh
+$<TARGET_FILE:case-folding-fs> "$PWD" || exit
+(
+# Enter the mount in a subshell so the script will have left before the unmount
+	cd .
+	"$@"
+)
+ret=$?
+fusermount3 -u "$PWD"
+exit $ret

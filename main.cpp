@@ -676,7 +676,7 @@ namespace
 	template <auto FunctionPtr>
 	struct wrapper;
 
-	template <class Ret, class PathArg, class ...Args, Ret (data::*FunctionPtr)(PathArg, Args...)>
+	template <class Ret, class PathArg, class ...Args, Ret (data::*FunctionPtr)(PathArg, Args...) noexcept>
 	struct wrapper<FunctionPtr>
 	{
 		static int wrapper_func(const char *path, Args ...args)

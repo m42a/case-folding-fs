@@ -327,7 +327,7 @@ namespace
 		errno_or_success rename_rel(const char *path_from, const char *path_to, int flags) noexcept
 		{
 			auto ret = ::renameat2(root_fd, path_from, root_fd, path_to, flags);
-			return errno_or_success::from_errno(ret);
+			return errno_or_success::from_errno(ret == 0);
 		}
 
 		std::optional<UnicodeString> to_unicode(std::string_view sv) const noexcept
